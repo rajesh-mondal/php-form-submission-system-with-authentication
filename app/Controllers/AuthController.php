@@ -12,16 +12,14 @@ class AuthController {
         $this->userModel = new User();
     }
 
-    // Displays the login form
     public function showLogin() {
         if ( Session::check() ) {
-            header( 'Location: /submission/form' ); // Redirect if already logged in
+            header( 'Location: /submission/form' );
             exit;
         }
         include __DIR__ . '/../../views/auth/login.php';
     }
 
-    // Handles the login POST request
     public function login() {
         if ( Session::check() ) {
             header( 'Location: /submission/form' );
@@ -43,7 +41,6 @@ class AuthController {
         exit;
     }
 
-    // Displays the signup form
     public function showSignup() {
         if ( Session::check() ) {
             header( 'Location: /submission/form' );
@@ -52,9 +49,7 @@ class AuthController {
         include __DIR__ . '/../../views/auth/signup.php';
     }
 
-    // Handles the signup POST request
     public function signup() {
-        // Basic backend validation
         $name = $_POST['name'] ?? '';
         $email = $_POST['email'] ?? '';
         $password = $_POST['password'] ?? '';
@@ -81,7 +76,6 @@ class AuthController {
         exit;
     }
 
-    // Handles logout
     public function logout() {
         Session::destroy();
         header( 'Location: /login' );
