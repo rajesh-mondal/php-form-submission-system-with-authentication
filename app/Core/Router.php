@@ -17,7 +17,6 @@ class Router {
             $controllerAction = $this->routes[$method][$uri];
             list( $controllerName, $action ) = explode( '@', $controllerAction );
 
-            // Full namespace path
             $controllerClass = "App\\Controllers\\" . $controllerName;
 
             if ( class_exists( $controllerClass ) ) {

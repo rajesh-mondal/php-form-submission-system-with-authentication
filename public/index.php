@@ -6,10 +6,9 @@ use App\Core\Session;
 
 Session::start();
 
-// Define Routes
 $router = new Router();
 
-// --- Authentication Routes ---
+// Authentication Routes
 $router->add( 'GET', '/', 'AuthController@showLogin' );
 $router->add( 'GET', '/login', 'AuthController@showLogin' );
 $router->add( 'POST', '/login', 'AuthController@login' );
@@ -17,11 +16,11 @@ $router->add( 'GET', '/signup', 'AuthController@showSignup' );
 $router->add( 'POST', '/signup', 'AuthController@signup' );
 $router->add( 'GET', '/logout', 'AuthController@logout' );
 
-// --- Submission Routes ---
+// Submission Routes
 $router->add( 'GET', '/submission/form', 'SubmissionController@showForm' );
 $router->add( 'POST', '/submission/ajax', 'SubmissionController@submitAjax' ); // AJAX endpoint
 
-// --- Report Routes ---
+// Report Routes
 $router->add( 'GET', '/report', 'ReportController@index' );
 
 $router->dispatch();
